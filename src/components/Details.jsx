@@ -1,24 +1,53 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const NextFormPage = () => {
-  const formData = JSON.parse(localStorage.getItem('formData'));
-  const formData2 = JSON.parse(localStorage.getItem('formData2'));
+  const formData = useSelector(state => state.form.formData);
+  const formData2 = useSelector(state => state.form.formData2);
 
   return (
-    <div >
+    <div>
       <h2>Form Data</h2>
-      <p>Name: {formData.firstName}</p>
-      <p>Phone Number: {formData.phone}</p>
-      <p>Email: {formData.email}</p>
-      <p>Country: {formData2.country}</p>
-
-      <p>state: {formData2.state}</p>
-<p>Address 1: {formData2.addressLine1}</p>
-<p>Address 2: {formData2.addressLine2}</p>
-<p>Pincode: {formData2.pincode}</p>
-<Link to="/">
-<button className='next-button'>Back</button></Link>
+      <table>
+        <tbody>
+          <tr>
+              <td>Name:</td>
+            <td>{formData && formData.firstName}</td>
+          </tr>
+          <tr>
+             <td>Phone Number:</td>
+            <td>{formData && formData.phone}</td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td>{formData && formData.email}</td>
+          </tr>
+          <tr>
+            <td>Country:</td>
+            <td>{formData2 && formData2.country}</td>
+          </tr>
+          <tr>
+            <td>State:</td>
+            <td>{formData2 && formData2.state}</td>
+          </tr>
+          <tr>
+            <td>Address 1:</td>
+            <td>{formData2 && formData2.addressLine1}</td>
+          </tr>
+          <tr>
+       <td>Address 2:</td>
+            <td>{formData2 && formData2.addressLine2}</td>
+             </tr>
+          <tr>
+            <td>Pincode:</td>
+            <td>{formData2 && formData2.pincode}</td>
+          </tr>
+           </tbody>
+      </table>
+      <Link to="/">
+        <button className='next-button'>Back</button>
+      </Link>
     </div>
   );
 };

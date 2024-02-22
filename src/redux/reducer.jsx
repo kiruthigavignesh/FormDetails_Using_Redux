@@ -1,31 +1,33 @@
-
-import { combineReducers } from 'redux';
-
 const initialState = {
   formData: {
     firstName: '',
     phone: '',
-    email: '',
+    email: ''
   },
-};
-
-const formDataReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'UPDATE_FORM_DATA':
-      return {
-        ...state,
-        formData: {
-          ...state.formData,
-          [action.payload.name]: action.payload.value,
-        },
-      };
-    default:
-      return state;
+  formData2: {
+    addressLine1: "",
+    addressLine2: "",
+    country: "",
+    state: "",
+    pincode: "",
   }
 };
 
-const rootReducer = combineReducers({
-  formData: formDataReducer,
-});
+const formReducer = (state = initialState, action) => {
+    switch (action.type) {
+    case 'SAVE_FORM_DATA':
+      return {
+           ...state,
+        formData: action.payload,
+      };
+   case 'SAVE_ADDITIONAL_FORM_DATA':
+      return {
+        ...state,
+        formData2: action.payload,
+      };
+    default:
+        return state;
+  }
+};
 
-export default rootReducer;
+export default formReducer;

@@ -13,6 +13,7 @@
   border: 1px solid gray;
   border-radius: 10px;
   padding: 40px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 input{
   width: 98%;
@@ -44,4 +45,22 @@ border-radius: 10px;
 .error{
   color: red;
   font-size: 13px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.next-button {
+  margin-top: 20px;
 }

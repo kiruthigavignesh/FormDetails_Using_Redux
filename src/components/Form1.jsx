@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { useDispatch } from 'react-redux';
+import { saveFormData } from '../redux/actions';
 const Form = () => {
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     firstName: '',
     phone: '',
@@ -11,12 +16,12 @@ const Form = () => {
   const [errors, setErrors] = useState({});
 
   const isValidName = (name) => {
-    const regexp = /^[a-zA-Z ]*$/;
-    return regexp.test(name);
+      const regexp = /^[a-zA-Z ]*$/;
+  return regexp.test(name);
   };
 
   const isValidEmail = (email) => {
-    const regexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+     const regexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regexp.test(email);
   };
 
@@ -38,7 +43,7 @@ const Form = () => {
     }
 
     if (Object.keys(newErrors).length === 0) {
-      localStorage.setItem('formData', JSON.stringify(formData));
+      dispatch(saveFormData(formData)); 
       navigate('/nextform');
     } else {
       setErrors(newErrors);
@@ -63,7 +68,7 @@ const Form = () => {
           <label>Name: </label>
           <input
             type="text"
-            name="firstName"
+     name="firstName"
             onChange={handleChange}
             value={formData.firstName}
           />
@@ -85,9 +90,9 @@ const Form = () => {
           <label>Email: </label>
           <input
             type="email"
-            name="email"
+         name="email"
             onChange={handleChange}
-            value={formData.email}
+      value={formData.email}
           />
           {errors.email && <span className="error">{errors.email}</span>}
         </div>

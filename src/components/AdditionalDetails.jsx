@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { saveAdditionalFormData } from '../redux/actions';
 
 const AdditionalForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [formData2, setFormData2] = useState({
     addressLine1: "",
@@ -33,7 +36,7 @@ const AdditionalForm = () => {
     }
 
     if (Object.keys(newErrors).length === 0) {
-      localStorage.setItem('formData2', JSON.stringify(formData2));
+      dispatch(saveAdditionalFormData(formData2)); // Dispatch action to save additional form data
       navigate('/details');
     } else {
       setErrors(newErrors);
@@ -50,48 +53,49 @@ const AdditionalForm = () => {
 
   return (
     <>
-    <div className='heading'><h1>Registration Form</h1></div>
+      <div className='heading'>
+        <h1>Registration Form</h1></div>
 
-    <div className="card">
-      <form className="form" onSubmit={handleSubmit}>
-        <div>
-          <label>Address Line 1: </label>
-          <input type="text" name="addressLine1" value={formData2.addressLine1} onChange={handleChange} />
-          {errors.addressLine1 && <span className="error">{errors.addressLine1}</span>}
-        </div>
-        <div>
-          <label>Address Line 2: </label>
-          <input type="text" name="addressLine2" value={formData2.addressLine2} onChange={handleChange} />
-          {errors.addressLine2 && <span className="error">{errors.addressLine2}</span>}
-        </div>
-        <div>
-          <label>Country: </label>
-          <select name="country" value={formData2.country} onChange={handleChange}>
-            <option value="">Select Country</option>
-            <option value="USA">USA</option>
-            <option value="UK">UK</option>
-          </select>
-          {errors.country && <span className="error">{errors.country}</span>}
-        </div>
-        <div>
-          <label>State: </label>
-          <select name="state" value={formData2.state} onChange={handleChange}>
-            <option value="">Select State</option>
-            <option value="CA">California</option>
-            <option value="NY">New York</option>
-          </select>
-          {errors.state && <span className="error">{errors.state}</span>}
-        </div>
-        <div>
-          <label>Pincode: </label>
-          <input type="number" name="pincode" value={formData2.pincode} onChange={handleChange} />
-          {errors.pincode && <span className="error">{errors.pincode}</span>}
-        </div>
-        <button type="submit" className="next-button">
-          Confirm
-        </button>
-      </form>
-    </div>
+      <div className="card">
+   <form className="form" onSubmit={handleSubmit}>
+          <div>
+            <label>Address Line 1: </label>
+            <input type="text" name="addressLine1" value={formData2.addressLine1} onChange={handleChange} />
+        {errors.addressLine1 && <span className="error">{errors.addressLine1}</span>}
+          </div>
+          <div>
+            <label>Address Line 2: </label>
+            <input type="text" name="addressLine2" value={formData2.addressLine2} onChange={handleChange} />
+            {errors.addressLine2 && <span className="error">{errors.addressLine2}</span>}
+          </div>
+          <div>
+            <label>Country: </label>
+       <select name="country" value={formData2.country} onChange={handleChange}>
+              <option value="">Select Country</option>
+              <option value="USA">USA</option>
+              <option value="UK">UK</option>
+            </select>
+            {errors.country && <span className="error">{errors.country}</span>}
+          </div>
+      <div>
+            <label>State: </label>
+            <select name="state" value={formData2.state} onChange={handleChange}>
+          <option value="">Select State</option>
+                 <option value="CA">California</option>
+              <option value="NY">New York</option>
+    </select>
+            {errors.state && <span className="error">{errors.state}</span>}
+          </div>
+       <div>
+            <label>Pincode: </label>
+     <input type="number" name="pincode" value={formData2.pincode} onChange={handleChange} />
+            {errors.pincode && <span className="error">{errors.pincode}</span>}
+          </div>
+          <button type="submit" className="next-button">
+            Confirm
+          </button>
+        </form>
+      </div>
     </>
   );
 };
