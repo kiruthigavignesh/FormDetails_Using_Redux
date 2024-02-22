@@ -17,7 +17,7 @@ const initialState = {
 const formReducer = (state = initialState, action) => {
     switch (action.type) {
     case 'SAVE_FORM_DATA':
-      return {
+       return {
            ...state,
            formData: action.payload,
       };
