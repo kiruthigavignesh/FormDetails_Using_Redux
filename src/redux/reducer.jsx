@@ -5,10 +5,11 @@ const initialState = {
     email: ''
   },
   formData2: {
-    addressLine1: "",
+     addressLine1: "",
     addressLine2: "",
-    country: "",
-    state: "",
+     country: "",
+     state: "",
+     
     pincode: "",
   }
 };
@@ -18,16 +19,16 @@ const formReducer = (state = initialState, action) => {
     case 'SAVE_FORM_DATA':
       return {
            ...state,
-        formData: action.payload,
+           formData: action.payload,
       };
    case 'SAVE_ADDITIONAL_FORM_DATA':
       return {
         ...state,
-        formData2: action.payload,
+         formData2: action.payload,
       };
     default:
-        return state;
-  }
+    return state;
+  } 
 };
 
 export default formReducer;
