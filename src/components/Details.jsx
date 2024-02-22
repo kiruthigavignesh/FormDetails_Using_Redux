@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 const NextFormPage = () => {
   const formData = useSelector(state => state.form.formData);
-  const formData2 = useSelector(state => state.form.formData2);
+  
+   const formData2 = useSelector(state => state.form.formData2);
 
   return (
     <div>

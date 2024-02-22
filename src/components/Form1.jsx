@@ -6,14 +6,14 @@ import { saveFormData } from '../redux/actions';
 const Form = () => {
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
+   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
     firstName: '',
     phone: '',
     email: ''
   });
-  const [errors, setErrors] = useState({});
+   const [errors, setErrors] = useState({});
 
   const isValidName = (name) => {
       const regexp = /^[a-zA-Z ]*$/;
@@ -22,24 +22,29 @@ const Form = () => {
 
   const isValidEmail = (email) => {
      const regexp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regexp.test(email);
+      return regexp.test(email);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newErrors = {};
-    if (!formData.firstName) {
+  const newErrors = {};
+   
+  if (!formData.firstName) {
       newErrors.firstName = 'Name is Required!';
     } else if (!isValidName(formData.firstName)) {
       newErrors.firstName = 'Only characters and spaces allowed!';
     }
     if (!formData.phone) {
+
       newErrors.phone = 'Mobile Number is Required!';
     }
-    if (!formData.email) {
+     if (!formData.email) {
+      
       newErrors.email = 'Email Id is Required!';
-    } else if (!isValidEmail(formData.email)) {
-      newErrors.email = 'Email ID Should be Proper Format!';
+    } 
+
+    else if (!isValidEmail(formData.email)) {
+       newErrors.email = 'Email ID Should be Proper Format!';
     }
 
     if (Object.keys(newErrors).length === 0) {
@@ -61,6 +66,7 @@ const Form = () => {
   return (
     <>
     <div className='heading'><h1>Registration Form</h1></div>
+    
     <div className="card">
    
       <form className="form" onSubmit={handleSubmit}>
