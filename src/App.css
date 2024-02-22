@@ -1,0 +1,47 @@
+.card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.heading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form{
+  width: 300px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 40px;
+}
+input{
+  width: 98%;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+textarea{
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+select{
+  width: 106%;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+.next-button{
+  width: 100px;
+background-color: black;
+color: white; 
+cursor: pointer;
+padding: 10px;   
+margin-top: 20px;
+border-radius: 10px;
+}
+.error{
+  color: red;
+  font-size: 13px;
+}
